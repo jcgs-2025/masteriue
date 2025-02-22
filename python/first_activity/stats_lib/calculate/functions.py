@@ -1,3 +1,6 @@
-from stats_lib import statistics 
+from stats_lib import statistics
 
-median = 
+Num1 = 10
+Num2 = 20
+mean = statistics.mean([Num1, Num2])
+print(mean)
