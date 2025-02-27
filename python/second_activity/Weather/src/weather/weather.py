@@ -1,3 +1,7 @@
+import requests
+import json
+from requests_oauthlib import HTTPBasicAuth
+import urllib3
 from calculator import series
 import concurrent.futures
 import time
