@@ -1,5 +1,5 @@
 [project]
-name = "stats-lib"
+name = "oop-py"
 version = "0.1.0"
 description = ""
 authors = [
@@ -8,15 +8,13 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "numpy (>=2.2.3,<3.0.0)",
-    "scikit-learn (>=1.6.1,<2.0.0)",
-    "pandas (>=2.2.3,<3.0.0)",
-    "pytest (>=8.3.4,<9.0.0)",
-    "pytest-benchmark (>=5.1.0,<6.0.0)"
 ]
 
+[tool.poetry.scripts]
+main = "main:main"
+
 [tool.poetry]
-packages = [{include = "stats_lib", from = "src"}]
+packages = [{include = "oop_py", from = "src"}]
 
 
 [build-system]
