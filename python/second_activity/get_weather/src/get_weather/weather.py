@@ -48,10 +48,7 @@ for i in city:
     result = concurrent_(i)
     print(f"The result is:", result)
 
-
-    
-    
-    
+   
 
 # def parallel_get_temperature(city_list):
 #     if city_list == None or len(city_list) == 0:

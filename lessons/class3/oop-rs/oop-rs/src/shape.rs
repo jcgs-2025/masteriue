@@ -1,5 +1,13 @@
-struct Triangle {
+ pub trait Shape {
+    fn area(&self) -> f64;
+    fn report(&self);
+} 
+ pub struct Triangle {
     base: f64,
+    height: f64,
+}
+pub struct Rectangle {
+    width: f64,
     height: f64,
 }
 
