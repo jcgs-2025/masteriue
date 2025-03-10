@@ -5,9 +5,11 @@ class Quadcopter(Drone):
 
     def __init__(self, id, x, y, commands):
         super().__init__(f"QC:{id}", x, y, commands)
+        self.positions = [(x, y)]
 
     def execute(self, command):
         command.execute(self)
+        self.positions.append((self.x, self.y))
         self.report(f"Position: {self.get_position()}")
     
     def get_position(self):
