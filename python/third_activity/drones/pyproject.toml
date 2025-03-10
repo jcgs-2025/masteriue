@@ -1,19 +1,16 @@
-[project]
-name = "drones"
-version = "0.1.0"
-description = ""
-authors = [
-    {name = "Your Name",email = "jcguerrero@correo.iue.edu.co"}
-]
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-]
-
 [tool.poetry]
-packages = [{include = "drones", from = "src"}]
+name = "drone"
+version = "0.1.0"
+description = "Drone flight simulation with OOP principles"
+authors = ["Julian D. Otalvaro <juliandavid347@gmail.com>"]
+readme = "README.md"
 
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.scripts]
+start = "main:main"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
