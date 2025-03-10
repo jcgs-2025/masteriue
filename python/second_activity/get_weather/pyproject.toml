@@ -11,8 +11,9 @@ dependencies = [
     "requests (>=2.32.3,<3.0.0)"
 ]
 
-[tool.poetry]
-packages = [{include = "get_weather", from = "src"}]
+[tool.poetry.dependencies]
+stats_lib = {path = "../../first_activity/stats_lib", develop = true}
+statistics = ">=1.0.3.5" 
 
 
 [build-system]

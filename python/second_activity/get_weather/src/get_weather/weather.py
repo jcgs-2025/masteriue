@@ -3,9 +3,11 @@ import json
 from requests.auth import HTTPBasicAuth
 import urllib3
 import concurrent.futures
+from statistics import mean, median, variance, mode
 
-def get_temperature (city):
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
+def get_temperature(city):
     url = f"https://weather.siel.com.co/city/{city}/temp/max"
     headers = {
         "Content-Type": "application/json-patch+json",
@@ -20,18 +22,48 @@ def get_temperature (city):
     except requests.exceptions.RequestException as e:
         print(f"Error downloading {url}: {str(e)}")
         return [], city
-    
-    
-def concurrent_(city):
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        future = executor.submit(get_temperature, city)
-    
-    for future in concurrent.futures.as_completed([future]):
-        result, city = future.result()
-        print(f"The result is: {result}")
-        print(f"The result of city is: {city}")
 
-city = [
+def calculate_statistics(city):
+    return {
+        "mean": mean(city),
+        "median": median(city),
+        "variance": variance(city),
+        "mode": mode(city)
+    }
+
+def concurrent_(cities):
+    try:
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            futures = {executor.submit(get_temperature, city): city for city in cities}
+        
+        for future in concurrent.futures.as_completed(futures):
+            result, city = future.result()
+            
+            if not result:
+                print(f"Error downloading {city}")
+                continue
+            
+            stats = parallel_(result)
+            if stats is not None:
+                print(f"The city is: {city}, mean: {stats['mean']}, median: {stats['median']}, variance: {stats['variance']}, mode: {stats['mode']}")
+            else:
+                print(f"No temperature data available for {city}")
+    except Exception as e:
+        print(f"Error: {str(e)}")
+
+def parallel_(city):
+    if not city:
+        return None
+    try:
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            future = executor.submit(calculate_statistics, city)
+            return future.result()
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return None
+
+if __name__ == "__main__":
+    cities = [
         "London",
         "New York",
         "Paris",
@@ -44,21 +76,4 @@ city = [
         "Beijing",
     ]
 
-for i in city:
-    result = concurrent_(i)
-    print(f"The result is:", result)
-
-   
-
-# def parallel_get_temperature(city_list):
-#     if city_list == None or len(city_list) == 0:
-#        return None
-   
-#     try:
-#         e =2 
-#         with concurrent.futures.ThreadPoolExecutor() as executor:
-#             results = executor.map(get_temperature,cities)    
-#     except Exception as e:
-#         print(f"Error to procesing the paralellism {city}: {str(e)}")
-#         return None   
-    
+    concurrent_(cities)
