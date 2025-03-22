@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 from euler_py.euler import euler_solve  
 
@@ -42,12 +44,13 @@ print("x:", y[:10, 0])  # Primeros 10 valores de x
 print("v:", y[:10, 1])  # Primeros 10 valores de v
 
 
-# Plot 
-# plt.plot(t, y[:, 0], label="Position x(t)")
-# plt.plot(t, y[:, 1], label="Velocity v(t)")
-# plt.xlabel("Time (s)")
-# plt.ylabel("Magnitude")
-# plt.title("Simple Harmonic Oscillator (Euler method)")
-# plt.legend()
-# plt.grid()
-# plt.savefig("output.png")  
+# # Plot 
+plt.plot(t, y[:, 0], label="Position x(t)")
+plt.plot(t, y[:, 1], label="Velocity v(t)")
+plt.xlabel("Time (s)")
+plt.ylabel("Magnitude")
+plt.title("Simple Harmonic Oscillator (Euler method)")
+plt.legend()
+plt.grid()
+plt.savefig("Harmonic oscilator.png")  
+plt.show()
