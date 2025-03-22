@@ -1,31 +1,12 @@
 use pyo3::prelude::*;
 
 #[pyfunction]
-
-"""
-Calculate the mean of a list of numbers
-
-Args:
-    data (List[float]): A list of numbers
-
-Returns:
-    float: The mean of the list of numbers
-"""
 fn mean (data: Vec<f32>) -> f32 {
     let sum: f32 = data.iter().sum();
     sum / data.len() as f32
 }
 
-"""
-Calculate the median of a list of numbers
-
-Args:
-    data (List[float]): A list of numbers
-
-Returns:
-    float: The median of the list of numbers
-"""
-
+#[pyfunction]
 fn median (data: Vec<f32>) -> f32 {
     let mut sorted_data = data.clone();
     sorted_data.sort_by(|a, b| a.partial_cmp(b).unwrap());
@@ -37,16 +18,7 @@ fn median (data: Vec<f32>) -> f32 {
     }
 }
 
-"""
-Calculate the standard deviation of a list of numbers
-
-Args:
-    data (List[float]): A list of numbers
-
-Returns:
-    float: The standard deviation of the list of numbers
-"""
-
+#[pyfunction]
 fn standard_deviation (data: Vec<f32>) -> f32 {
     let n = data.len() as f32;
     let mean = mean(data.clone());

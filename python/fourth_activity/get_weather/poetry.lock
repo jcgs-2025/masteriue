@@ -115,6 +115,21 @@ files = [
 ]
 
 [[package]]
+name = "collision"
+version = "0.1.0"
+description = ""
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "collision-0.1.0-cp312-cp312-manylinux_2_34_x86_64.whl", hash = "sha256:64880101c3799770036e10d144cbdb39e74d65019693a319419672a90ac8bf5b"},
+]
+
+[package.source]
+type = "file"
+url = "src/rust_crates/statistics/target/wheels/collision-0.1.0-cp312-cp312-manylinux_2_34_x86_64.whl"
+
+[[package]]
 name = "idna"
 version = "3.10"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -199,4 +214,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "58d52dc20baf5b70ca8434beb3033fbbb2bc57a1f5d6cfc28ad3c2083acef5b0"
+content-hash = "88b6609e3e4b306909298c55748528b13aea3d59cb90c59bb58238d71cd21b68"
