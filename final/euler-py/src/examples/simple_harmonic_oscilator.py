@@ -37,6 +37,11 @@ h = 0.01  # h value --> (small h value for better accuracy)
 # Solve the system
 t, y = euler_solve(simple_harmonic_oscillator, y0, ti, tf, h, args=(k, m))
 
+print("Time:", t[:10])  # Primeros 10 valores de tiempo
+print("x:", y[:10, 0])  # Primeros 10 valores de x
+print("v:", y[:10, 1])  # Primeros 10 valores de v
+
+
 # Plot 
 # plt.plot(t, y[:, 0], label="Position x(t)")
 # plt.plot(t, y[:, 1], label="Velocity v(t)")
