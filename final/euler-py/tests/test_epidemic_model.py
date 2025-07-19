@@ -4,7 +4,8 @@ from euler_py.euler import euler_solve
 from src.examples.epidemic_model import sir_model
 
 def test_sir_model_shape():
-    """Verifica que la función del modelo SIR retorne un array de la forma correcta."""
+    """Verifica que la función sir_model devuelva un array de 3 elementos.
+    """
     y0 = np.array([990, 10, 0])  # Condiciones iniciales
     dydt = sir_model(0, y0)
     assert isinstance(dydt, np.ndarray), "La salida no es un array de numpy"

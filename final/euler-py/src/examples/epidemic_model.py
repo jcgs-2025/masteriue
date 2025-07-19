@@ -21,7 +21,9 @@ def sir_model(t, y):
     """
     S, I, R = y
     beta = 0.3   # Infection rate
-    gamma = 0.1  # Recovery rate
+    gamma = 0.01  # Recovery rate
+    
+    # Derivatives
     dSdt = -beta * S * I
     dIdt = beta * S * I - gamma * I
     dRdt = gamma * I
